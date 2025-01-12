@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Cloud, Thermometer, Waves, Fish, Satellite, FlaskRoundIcon as Flask, Anchor, Map, TreesIcon as Tree, GraduationCap, Newspaper, PenToolIcon as Tool, Info, Menu, X } from 'lucide-react';
+import { Home, Cloud, Thermometer, Waves, Fish, Satellite, FlaskConical, Anchor, Map, Trees, GraduationCap, Newspaper, Wrench, Info, Menu, X } from 'lucide-react';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const links = [
@@ -9,13 +9,13 @@ function Sidebar({ isOpen, toggleSidebar }) {
     { name: 'Ocean & Coasts', icon: Waves },
     { name: 'Fisheries', icon: Fish },
     { name: 'Satellites', icon: Satellite },
-    { name: 'Research', icon: Flask },
+    { name: 'Research', icon: FlaskConical },
     { name: 'Marine & Aviation', icon: Anchor },
     { name: 'Charting', icon: Map },
-    { name: 'Sanctuaries', icon: Tree },
+    { name: 'Sanctuaries', icon: Trees },
     { name: 'Education', icon: GraduationCap },
     { name: 'News and features', icon: Newspaper },
-    { name: 'Tools & resources', icon: Tool },
+    { name: 'Tools & resources', icon: Wrench },
     { name: 'About our agency', icon: Info }
   ];
 
@@ -29,9 +29,9 @@ function Sidebar({ isOpen, toggleSidebar }) {
           {links.map((link, index) => (
             <li key={index}>
               <a href="#" className="nav-link">
-                <span className="icon">
+                <div className="icon-container">
                   <link.icon size={20} />
-                </span>
+                </div>
                 <span className="link-text">{link.name}</span>
               </a>
             </li>
@@ -50,11 +50,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
           z-index: 1000;
           overflow-y: auto;
           overflow-x: hidden;
-
         }
+
         .sidebar.open {
           width: 250px;
         }
+
         .toggle-btn {
           position: fixed;
           left: 0;
@@ -70,52 +71,66 @@ function Sidebar({ isOpen, toggleSidebar }) {
           cursor: pointer;
           transition: all 0.3s ease-in-out;
           z-index: 1001;
-          
         }
+
         .sidebar.open .toggle-btn {
           left: 250px;
         }
+
         nav {
           margin-top: 60px;
         }
+
         ul {
           list-style-type: none;
           padding: 0;
           margin: 0;
         }
+
         .nav-link {
           display: flex;
           align-items: center;
-          padding: 15px;
           text-decoration: none;
           color: white;
           transition: background-color 0.3s ease;
+          height: 48px; /* Fixed height for each link */
+          padding: 0;
         }
+
         .nav-link:hover {
           background-color: rgba(255, 255, 255, 0.1);
         }
-        .icon {
-          min-width: 30px;
+
+        .icon-container {
+          width: 60px; /* Fixed width matching sidebar width */
+          height: 48px; /* Fixed height matching nav-link */
           display: flex;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
         }
+
         .link-text {
-          margin-left: 10px;
+          padding-left: 8px;
           opacity: ${isOpen ? '1' : '0'};
           transition: opacity 0.3s ease;
+          white-space: nowrap;
         }
+
         /* Scrollbar Styling */
         .sidebar::-webkit-scrollbar {
           width: 5px;
         }
+
         .sidebar::-webkit-scrollbar-track {
           background: #0073CF;
         }
+
         .sidebar::-webkit-scrollbar-thumb {
           background: rgba(255, 255, 255, 0.2);
           border-radius: 3px;
         }
+
         .sidebar::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 255, 255, 0.3);
         }
