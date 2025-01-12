@@ -30,7 +30,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
             <li key={index}>
               <a href="#" className="nav-link">
                 <div className="icon-container">
-                  <link.icon size={20} />
+                  <link.icon size={20} className="sidebar-icon" />
                 </div>
                 <span className="link-text">{link.name}</span>
               </a>
@@ -46,7 +46,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
           position: fixed;
           left: 0;
           top: 0px;
-          transition: width 0.3s ease-in-out;
+          transition: width 0.3s ease-in-out, margin-top 0.3s ease-in-out;
           z-index: 1000;
           overflow-y: auto;
           overflow-x: hidden;
@@ -54,6 +54,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         .sidebar.open {
           width: 250px;
+          margin-top: -50px;
+          padding-bottom: 50px; /* Add space at the bottom */
         }
 
         .toggle-btn {
@@ -93,7 +95,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
           text-decoration: none;
           color: white;
           transition: background-color 0.3s ease;
-          height: 48px; /* Fixed height for each link */
+          height: 48px;
           padding: 0;
         }
 
@@ -102,8 +104,8 @@ function Sidebar({ isOpen, toggleSidebar }) {
         }
 
         .icon-container {
-          width: 60px; /* Fixed width matching sidebar width */
-          height: 48px; /* Fixed height matching nav-link */
+          width: 60px;
+          height: 48px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -117,7 +119,6 @@ function Sidebar({ isOpen, toggleSidebar }) {
           white-space: nowrap;
         }
 
-        /* Scrollbar Styling */
         .sidebar::-webkit-scrollbar {
           width: 5px;
         }
@@ -133,6 +134,43 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
         .sidebar::-webkit-scrollbar-thumb:hover {
           background: rgba(255, 255, 255, 0.3);
+        }
+
+        .sidebar-icon {
+          transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover .sidebar-icon {
+          transform: scale(1.2);
+        }
+
+        @keyframes swim {
+          0% { transform: translateX(0); }
+          50% { transform: translateX(5px); }
+          100% { transform: translateX(0); }
+        }
+
+        .nav-link:hover .sidebar-icon.lucide-fish {
+          animation: swim 1s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-5px); }
+          100% { transform: translateY(0); }
+        }
+
+        .nav-link:hover .sidebar-icon.lucide-waves {
+          animation: wave 1s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .nav-link:hover .sidebar-icon.lucide-satellite {
+          animation: rotate 2s linear infinite;
         }
       `}</style>
     </div>
