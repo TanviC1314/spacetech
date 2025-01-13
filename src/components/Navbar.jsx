@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, Bell, User } from 'lucide-react';
 
 function Navbar({ sidebarOpen }) {
@@ -10,7 +11,12 @@ function Navbar({ sidebarOpen }) {
       <ul className="nav-links">
         {['Home', 'News', 'Data', 'Research', 'About'].map((tab) => (
           <li key={tab} className={activeTab === tab ? 'active' : ''}>
-            <a href="#" onClick={() => setActiveTab(tab)}>{tab}</a>
+            <Link
+              to={tab === "Home" ? "/" : `/${tab.toLowerCase()}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </Link>
           </li>
         ))}
       </ul>
