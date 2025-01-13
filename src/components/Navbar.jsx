@@ -4,13 +4,25 @@ import { Search, Bell, User } from 'lucide-react';
 function Navbar({ sidebarOpen }) {
   const [activeTab, setActiveTab] = useState('Home');
 
+  const navItems = [
+    'Home',
+    'About Space Weather',
+    'Product and Data',
+    'Dashboards',
+    'Media and Resources',
+    'Subscribe',
+    'Annual Meeting',
+    'About',
+    'Contact Us'
+  ];
+
   return (
     <nav className={`navbar ${sidebarOpen ? 'sidebar-open' : ''}`}>
       <div className="logo">SWPC</div>
       <ul className="nav-links">
-        {['Home', 'News', 'Data', 'Research', 'About'].map((tab) => (
-          <li key={tab} className={activeTab === tab ? 'active' : ''}>
-            <a href="#" onClick={() => setActiveTab(tab)}>{tab}</a>
+        {navItems.map((item) => (
+          <li key={item} className={activeTab === item ? 'active' : ''}>
+            <a href="#" onClick={() => setActiveTab(item)}>{item}</a>
           </li>
         ))}
       </ul>
@@ -21,7 +33,7 @@ function Navbar({ sidebarOpen }) {
       </div>
       <style jsx>{`
         .navbar {
-          background: linear-gradient(to right, #003366, #004080);
+          background: linear-gradient(to right, rgb(0, 0, 66), rgb(0, 0, 66));
           padding: 0 1.5rem;
           display: flex;
           justify-content: space-between;
@@ -30,6 +42,8 @@ function Navbar({ sidebarOpen }) {
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           transition: padding-left 0.3s ease-in-out;
           margin-top: -10px;
+          position: relative;
+          overflow-x: auto;
         }
         .navbar.sidebar-open {
           padding-left: 270px;
@@ -38,16 +52,24 @@ function Navbar({ sidebarOpen }) {
           color: white;
           font-size: 1.5rem;
           font-weight: bold;
-          margin-left:60px;
+          margin-left: 60px;
+          white-space: nowrap;
         }
         .nav-links {
           display: flex;
           list-style-type: none;
           margin: 0;
           padding: 0;
+          overflow-x: auto;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .nav-links::-webkit-scrollbar {
+          display: none;
         }
         .nav-links li {
           margin: 0 1rem;
+          white-space: nowrap;
         }
         .nav-links a {
           color: white;
@@ -56,6 +78,7 @@ function Navbar({ sidebarOpen }) {
           padding: 0.5rem 0;
           transition: all 0.3s ease;
           border-bottom: 2px solid transparent;
+          font-size: 0.9rem;
         }
         .nav-links li.active a,
         .nav-links a:hover {
@@ -64,6 +87,7 @@ function Navbar({ sidebarOpen }) {
         .nav-actions {
           display: flex;
           gap: 1rem;
+          margin-left: 1rem;
         }
         .nav-actions button {
           background: none;
@@ -74,6 +98,14 @@ function Navbar({ sidebarOpen }) {
         }
         .nav-actions button:hover {
           transform: scale(1.1);
+        }
+        @media (max-width: 1024px) {
+          .nav-links {
+            padding: 0 1rem;
+          }
+          .nav-actions {
+            margin-left: 0.5rem;
+          }
         }
       `}</style>
     </nav>
