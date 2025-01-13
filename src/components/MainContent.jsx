@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Clock } from 'lucide-react';
 import Dashboard from './Dashboard';
+import Timeline from './Timeline';
 
 function MainContent({ sidebarOpen }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -84,28 +85,28 @@ function MainContent({ sidebarOpen }) {
       title: 'Weather Forecast', 
       description: 'Stay informed with our latest weather updates and predictions.', 
       icon: 'cloud',
-      image: 'https://images.unsplash.com/photo-1561484930-998b6a7b22e8?auto=format&fit=crop&w=300&q=80',
+      image: 'src/assets/weather.png',
       link: '#weather-forecast'
     },
     { 
       title: 'Ocean Research', 
       description: 'Explore groundbreaking discoveries in oceanography and marine science.', 
       icon: 'droplet',
-      image: 'https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=300&q=80',
+      image: 'src/assets/ocean.png',
       link: '#ocean-research'
     },
     { 
       title: 'Climate Change', 
       description: 'Analyze the impacts of climate change and our ongoing mitigation efforts.', 
       icon: 'thermometer',
-      image: 'https://assets.science.nasa.gov/dynamicimage/assets/science/esd/climate/internal_resources/2719/effectsbannernew-opt.jpeg?w=4096&format=jpeg&fit=clip&crop=faces%2Cfocalpoint',
+      image: 'src/assets/climate.png',
       link: '#climate-change'
     },
     { 
       title: 'Marine Life', 
       description: 'Investigate diverse marine ecosystems and species in our oceans.', 
       icon: 'fish',
-      image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=300&q=80',
+      image: 'src/assets/marine.png',
       link: '#marine-life'
     },
   ];
@@ -287,31 +288,8 @@ function MainContent({ sidebarOpen }) {
       
       <Dashboard />
       
-      <div className="timeline">
-        <div className="timeline-container">
-          <h2 className="timeline-title">Program Schedule</h2>
-          {timelineEvents.map((event, index) => (
-            <div key={index} className="timeline-event">
-              <div className="timeline-time">
-                <Clock size={16} />
-                {event.time}
-              </div>
-              <div className="timeline-content">
-                <div className="timeline-dot" />
-                <div className="timeline-event-title">{event.event}</div>
-                {event.speakers && (
-                  <div className="timeline-speakers">
-                    {event.speakers.map((speaker, idx) => (
-                      <div key={idx}>{speaker}</div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
       
+    
       <div className="card-container">
         {cards.map((card, index) => (
           <div key={index} className="card animated-card">

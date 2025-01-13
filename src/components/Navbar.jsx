@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, Bell, User } from 'lucide-react';
 
 function Navbar({ sidebarOpen }) {
@@ -6,6 +7,7 @@ function Navbar({ sidebarOpen }) {
 
   const navItems = [
     'Home',
+    'Events',
     'About Space Weather',
     'Product and Data',
     'Dashboards',
@@ -18,11 +20,16 @@ function Navbar({ sidebarOpen }) {
 
   return (
     <nav className={`navbar ${sidebarOpen ? 'sidebar-open' : ''}`}>
-      <div className="logo">SWPC</div>
+      <div className="logo"></div>
       <ul className="nav-links">
-        {navItems.map((item) => (
-          <li key={item} className={activeTab === item ? 'active' : ''}>
-            <a href="#" onClick={() => setActiveTab(item)}>{item}</a>
+        {navItems.map((tab) => (
+          <li key={tab} className={activeTab === tab ? 'active' : ''}>
+            <Link
+              to={tab === "Home" ? "/" : `/${tab.toLowerCase().replace(/ /g, '-')}`}
+              onClick={() => setActiveTab(tab)}
+            >
+              {tab}
+            </Link>
           </li>
         ))}
       </ul>
@@ -33,17 +40,17 @@ function Navbar({ sidebarOpen }) {
       </div>
       <style jsx>{`
         .navbar {
-          background: linear-gradient(to right, rgb(0, 0, 66), rgb(0, 0, 66));
+          background: linear-gradient(to right, rgb(0, 0, 66), rgb(34, 34, 120));
           padding: 0 1.5rem;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          height: 60px;
+          height: 50px;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           transition: padding-left 0.3s ease-in-out;
           margin-top: -10px;
           position: relative;
-          overflow-x: auto;
+          overflow-x: hidden; /* Remove scrollbar */
         }
         .navbar.sidebar-open {
           padding-left: 270px;
@@ -60,12 +67,12 @@ function Navbar({ sidebarOpen }) {
           list-style-type: none;
           margin: 0;
           padding: 0;
-          overflow-x: auto;
+          overflow-x: hidden; /* Remove scrollbar */
           -ms-overflow-style: none;
           scrollbar-width: none;
         }
         .nav-links::-webkit-scrollbar {
-          display: none;
+          display: none; /* Remove scrollbar */
         }
         .nav-links li {
           margin: 0 1rem;
@@ -113,4 +120,3 @@ function Navbar({ sidebarOpen }) {
 }
 
 export default Navbar;
-

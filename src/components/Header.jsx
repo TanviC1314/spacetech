@@ -24,8 +24,9 @@ function Header({ className }) {
           text-align: center;
           margin-top: -12px;
           transition: margin-left 0.3s ease-in-out;
-          background: linear-gradient(to right, rgb(0, 0, 66), rgb(0, 0, 66));
           color: white;
+          background: linear-gradient(to right, rgb(0, 0, 66), rgb(34, 34, 120));
+          
         }
         .header-content {
           max-width: 1200px;

@@ -1,43 +1,47 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
+import React from "react";
+import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 function Footer() {
   return (
     <footer className="footer">
       <div className="footer-content">
-        <div className="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Data</a></li>
-            <li><a href="#">Research</a></li>
-            <li><a href="#">About</a></li>
-          </ul>
+        <div className="footer-address">
+          <p>Shah and Anchor Kutchhi Engineering College</p>
+          <p>Mahavir Education Trust Chowk,</p>
+          <p>Chembur, Mumbai - 400088,</p>
+          <p>Maharashtra, India.</p>
         </div>
         <div className="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Tribal & Indigenous Communities</a></li>
-            <li><a href="#">Bipartisan Infrastructure Law</a></li>
-            <li><a href="#">Inflation Reduction Act</a></li>
-          </ul>
-        </div>
-        <div className="footer-section">
-          <h3>Legal</h3>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">FOIA</a></li>
-            <li><a href="#">Information Quality</a></li>
-          </ul>
-        </div>
-        <div className="footer-section">
-          <h3>Connect with Us</h3>
+          <p>Connect with Us</p>
           <div className="social-icons">
-            <a href="#" aria-label="Facebook"><Facebook size={24} /></a>
-            <a href="#" aria-label="Twitter"><Twitter size={24} /></a>
-            <a href="#" aria-label="Instagram"><Instagram size={24} /></a>
-            <a href="#" aria-label="YouTube"><Youtube size={24} /></a>
+            <a
+              href="https://www.facebook.com/@shahanchor/"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <Facebook size={24} />
+            </a>
+            <a
+              href="https://x.com/sakectweets/"
+              target="_blank"
+              aria-label="Twitter"
+            >
+              <Twitter size={24} />
+            </a>
+            <a
+              href="https://www.instagram.com/sakec_chembur/"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <Instagram size={24} />
+            </a>
+            <a
+              href="https://www.youtube.com/@SAKECYouTubeChannel"
+              target="_blank"
+              aria-label="YouTube"
+            >
+              <Youtube size={24} />
+            </a>
           </div>
         </div>
       </div>
@@ -51,7 +55,7 @@ function Footer() {
           padding: 3rem 2rem 1rem;
           margin-left: -10px;
           margin-bottom: -10px;
-          }
+        }
         .footer-content {
           display: flex;
           flex-wrap: wrap;
@@ -63,6 +67,13 @@ function Footer() {
           flex: 1;
           min-width: 200px;
           margin-bottom: 2rem;
+          text-align: right;
+        }
+        .footer-section p {
+          margin-right: 12px;
+          font-size: 1rem;
+          font-weight: bold;
+          margin-bottom: 10px;
         }
         .footer-section h3 {
           margin-bottom: 1rem;
@@ -70,7 +81,7 @@ function Footer() {
           position: relative;
         }
         .footer-section h3::after {
-          content: '';
+          content: "";
           position: absolute;
           left: 0;
           bottom: -5px;
@@ -96,6 +107,7 @@ function Footer() {
         .social-icons {
           display: flex;
           gap: 1rem;
+          justify-content: right;
         }
         .social-icons a {
           color: #ffffff;
@@ -108,7 +120,7 @@ function Footer() {
           text-align: center;
           margin-top: 2rem;
           padding-top: 1rem;
-          border-top: 1px solid rgba(255,255,255,0.1);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
       `}</style>
     </footer>
@@ -116,4 +128,3 @@ function Footer() {
 }
 
 export default Footer;
-

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PieChart, Pie, Cell, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Sun, Wind, Activity, Zap } from 'lucide-react';
+import { Sun, Wind, Activity, Zap, AlertTriangle } from 'lucide-react';
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('3-Day Forecast');
@@ -50,117 +50,208 @@ const Dashboard = () => {
     dashboard: {
       padding: '24px',
       fontFamily: 'Arial, sans-serif',
+      marginLeft:'30px',
+      background: '#f8fafc',
     },
     title: {
-      fontSize: '24px',
+      fontSize: '28px',
       fontWeight: 'bold',
-      color: '#333',
+      color: '#1e293b',
       marginBottom: '24px',
       textAlign: 'center',
     },
+    alertCard: {
+      background: 'linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%)',
+      borderRadius: '12px',
+      padding: '20px',
+      marginBottom: '32px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+      animation: 'slideIn 0.5s ease-out',
+    },
+    alertIcon: {
+      color: '#dc2626',
+      animation: 'pulse 2s infinite',
+    },
+    alertContent: {
+      flex: 1,
+    },
+    alertTitle: {
+      fontSize: '18px',
+      fontWeight: 'bold',
+      color: '#991b1b',
+      marginBottom: '4px',
+    },
+    alertText: {
+      color: '#7f1d1d',
+      fontSize: '14px',
+      lineHeight: '1.5',
+    },
     cardGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-      gap: '20px',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+      gap: '24px',
       marginBottom: '32px',
     },
     card: {
       background: '#ffffff',
-      borderRadius: '8px',
-      padding: '16px',
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+      borderRadius: '12px',
+      padding: '20px',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      transition: 'all 0.3s ease',
     },
     cardTitle: {
       fontSize: '16px',
-      fontWeight: 'semibold',
-      color: '#555',
-      marginTop: '12px',
+      fontWeight: 'bold',
+      color: '#1e293b',
       marginBottom: '8px',
     },
     cardValue: {
-      fontSize: '20px',
+      fontSize: '24px',
       fontWeight: 'bold',
-      color: '#333',
+      marginBottom: '4px',
     },
     cardSubValue: {
-      fontSize: '12px',
-      color: '#777',
-    },
-    chartContainer: {
-      background: '#ffffff',
-      borderRadius: '8px',
-      padding: '16px',
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
-      marginBottom: '24px',
-    },
-    chartTitle: {
-      fontSize: '18px',
-      fontWeight: 'semibold',
-      color: '#333',
-      marginBottom: '16px',
+      fontSize: '14px',
     },
     tabContainer: {
       display: 'flex',
       justifyContent: 'center',
+      gap: '16px',
       marginBottom: '24px',
     },
     tab: {
-      padding: '8px 16px',
-      borderRadius: '4px',
-      marginRight: '8px',
+      padding: '12px 24px',
+      borderRadius: '8px',
       cursor: 'pointer',
-      transition: 'background-color 0.2s ease, color 0.2s ease',
+      transition: 'all 0.3s ease',
       border: 'none',
       outline: 'none',
+      fontSize: '16px',
+      fontWeight: '500',
     },
-    activeTab: {
-      backgroundColor: '#f0f0f0',
-      color: '#333',
-    },
-    inactiveTab: {
-      backgroundColor: '#ffffff',
-      color: '#777',
-    },
-    tabContent: {
+    forecastContainer: {
       background: '#ffffff',
-      borderRadius: '8px',
-      padding: '16px',
-      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+      borderRadius: '12px',
+      padding: '24px',
+      boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
     },
+    forecastTitle: {
+      fontSize: '20px',
+      fontWeight: 'bold',
+      color: '#1e293b',
+      marginBottom: '16px',
+      borderBottom: '2px solid #e2e8f0',
+      paddingBottom: '8px',
+    },
+    forecastList: {
+      listStyle: 'none',
+      padding: '0',
+      margin: '0',
+    },
+    forecastItem: {
+      padding: '16px',
+      borderRadius: '8px',
+      marginBottom: '8px',
+      background: '#f8fafc',
+      transition: 'all 0.3s ease',
+    },
+    chartContainer: {
+      marginBottom: '24px',
+    },
+    chartTitle: {
+      fontSize: '18px',
+      fontWeight: 'bold',
+      color: '#1e293b',
+      marginBottom: '16px',
+    },
+  };
+
+  // Color configurations for cards
+  const cardConfigs = {
+    solarWind: {
+      bg: '#fff1f2',
+      valueColor: '#e11d48',
+      subValueColor: '#be123c',
+      iconColor: '#fb7185'
+    },
+    kpIndex: {
+      bg: '#f0f9ff',
+      valueColor: '#0369a1',
+      subValueColor: '#0c4a6e',
+      iconColor: '#38bdf8'
+    },
+    xRayFlux: {
+      bg: '#fefce8',
+      valueColor: '#ca8a04',
+      subValueColor: '#854d0e',
+      iconColor: '#facc15'
+    },
+    cmeProbability: {
+      bg: '#faf5ff',
+      valueColor: '#9333ea',
+      subValueColor: '#6b21a8',
+      iconColor: '#c084fc'
+    }
+  };
+
+  // Tab colors
+  const tabColors = {
+    active: {
+      bg: '#3b82f6',
+      text: '#ffffff',
+      shadow: '0 4px 6px -1px rgba(59, 130, 246, 0.5)'
+    },
+    inactive: {
+      bg: '#f8fafc',
+      text: '#64748b',
+      shadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+    }
   };
 
   return (
     <div style={styles.dashboard}>
       <h1 style={styles.title}>Space Weather Dashboard</h1>
-      
+
+      <div style={styles.alertCard} className="alert-card">
+        <AlertTriangle size={32} style={styles.alertIcon} className="alert-icon" />
+        <div style={styles.alertContent}>
+          <h3 style={styles.alertTitle}>Severe Geomagnetic Storm Approaching</h3>
+          <p style={styles.alertText}>
+            G3 level storm expected to reach Earth in the next 24 hours. Potential impacts on satellite operations and power grids.
+          </p>
+        </div>
+      </div>
+
       <div style={styles.cardGrid}>
-        <div style={{...styles.card, backgroundColor: '#FFF5F5'}} className="dashboard-card">
-          <Wind size={36} color="#FF9999" className="dashboard-icon" />
+        <div style={{...styles.card, backgroundColor: cardConfigs.solarWind.bg}} className="dashboard-card">
+          <Wind size={36} color={cardConfigs.solarWind.iconColor} className="dashboard-icon" />
           <h3 style={styles.cardTitle}>Solar Wind Speed</h3>
-          <p style={styles.cardValue}>450 km/s</p>
-          <p style={styles.cardSubValue}>+12% from last hour</p>
+          <p style={{...styles.cardValue, color: cardConfigs.solarWind.valueColor}}>450 km/s</p>
+          <p style={{...styles.cardSubValue, color: cardConfigs.solarWind.subValueColor}}>+12% from last hour</p>
         </div>
-        <div style={{...styles.card, backgroundColor: '#F5F5FF'}} className="dashboard-card">
-          <Activity size={36} color="#9999FF" className="dashboard-icon" />
+        <div style={{...styles.card, backgroundColor: cardConfigs.kpIndex.bg}} className="dashboard-card">
+          <Activity size={36} color={cardConfigs.kpIndex.iconColor} className="dashboard-icon" />
           <h3 style={styles.cardTitle}>Kp Index</h3>
-          <p style={styles.cardValue}>4</p>
-          <p style={styles.cardSubValue}>Active</p>
+          <p style={{...styles.cardValue, color: cardConfigs.kpIndex.valueColor}}>4</p>
+          <p style={{...styles.cardSubValue, color: cardConfigs.kpIndex.subValueColor}}>Active</p>
         </div>
-        <div style={{...styles.card, backgroundColor: '#FFFFF5'}} className="dashboard-card">
-          <Sun size={36} color="#FFFF99" className="dashboard-icon" />
+        <div style={{...styles.card, backgroundColor: cardConfigs.xRayFlux.bg}} className="dashboard-card">
+          <Sun size={36} color={cardConfigs.xRayFlux.iconColor} className="dashboard-icon" />
           <h3 style={styles.cardTitle}>X-Ray Flux</h3>
-          <p style={styles.cardValue}>C2.3</p>
-          <p style={styles.cardSubValue}>Low solar activity</p>
+          <p style={{...styles.cardValue, color: cardConfigs.xRayFlux.valueColor}}>C2.3</p>
+          <p style={{...styles.cardSubValue, color: cardConfigs.xRayFlux.subValueColor}}>Low solar activity</p>
         </div>
-        <div style={{...styles.card, backgroundColor: '#FFF5FF'}} className="dashboard-card">
-          <Zap size={36} color="#FF99FF" className="dashboard-icon" />
+        <div style={{...styles.card, backgroundColor: cardConfigs.cmeProbability.bg}} className="dashboard-card">
+          <Zap size={36} color={cardConfigs.cmeProbability.iconColor} className="dashboard-icon" />
           <h3 style={styles.cardTitle}>CME Probability</h3>
-          <p style={styles.cardValue}>65%</p>
-          <p style={styles.cardSubValue}>High likelihood in next 24h</p>
+          <p style={{...styles.cardValue, color: cardConfigs.cmeProbability.valueColor}}>65%</p>
+          <p style={{...styles.cardSubValue, color: cardConfigs.cmeProbability.subValueColor}}>High likelihood in next 24h</p>
         </div>
       </div>
 
@@ -206,59 +297,136 @@ const Dashboard = () => {
       </div>
 
       <div style={styles.tabContainer}>
-        {['3-Day Forecast', 'Current Conditions', 'Active Alerts'].map((tab) => (
+        {['3-Day Forecast', 'Current Conditions'].map((tab) => (
           <button
             key={tab}
             style={{
               ...styles.tab,
-              ...(activeTab === tab ? styles.activeTab : styles.inactiveTab),
+              backgroundColor: activeTab === tab ? tabColors.active.bg : tabColors.inactive.bg,
+              color: activeTab === tab ? tabColors.active.text : tabColors.inactive.text,
+              boxShadow: activeTab === tab ? tabColors.active.shadow : tabColors.inactive.shadow,
             }}
             onClick={() => setActiveTab(tab)}
+            className="tab-button"
           >
             {tab}
           </button>
         ))}
       </div>
-      <div style={styles.tabContent}>
+
+      <div style={styles.forecastContainer}>
         {activeTab === '3-Day Forecast' && (
           <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '12px' }}>3-Day Space Weather Forecast</h4>
-            <ul style={{ paddingLeft: '20px' }}>
-              <li>Day 1: Moderate solar activity expected</li>
-              <li>Day 2: High likelihood of geomagnetic storms</li>
-              <li>Day 3: Solar wind speeds increasing</li>
+            <h4 style={styles.forecastTitle}>3-Day Space Weather Forecast</h4>
+            <ul style={styles.forecastList}>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>Day 1:</strong> Severe geomagnetic storm conditions (G3)
+              </li>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>Day 2:</strong> Moderate solar activity, potential aurora displays
+              </li>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>Day 3:</strong> Solar wind speeds normalizing, minor geomagnetic activity
+              </li>
             </ul>
           </div>
         )}
         {activeTab === 'Current Conditions' && (
           <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '12px' }}>Current Space Weather Conditions</h4>
-            <p>Solar wind speed: 450 km/s</p>
-            <p>Interplanetary magnetic field: 5 nT</p>
-            <p>X-ray flux: C2.3</p>
-          </div>
-        )}
-        {activeTab === 'Active Alerts' && (
-          <div>
-            <h4 style={{ fontSize: '16px', fontWeight: 'bold', marginBottom: '12px' }}>Active Space Weather Alerts</h4>
-            <p style={{ color: '#d32f2f', fontWeight: 'medium' }}>Geomagnetic Storm Watch: G2 (Moderate) level storm expected in next 24 hours</p>
-            <p style={{ color: '#f57c00', fontWeight: 'medium' }}>Solar Radiation Storm: S1 (Minor) radiation storm in progress</p>
+            <h4 style={styles.forecastTitle}>Current Space Weather Conditions</h4>
+            <ul style={styles.forecastList}>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>Solar Wind Speed:</strong> 450 km/s
+              </li>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>Interplanetary Magnetic Field:</strong> 5 nT
+              </li>
+              <li style={styles.forecastItem} className="forecast-item">
+                <strong>X-ray Flux:</strong> C2.3
+              </li>
+            </ul>
           </div>
         )}
       </div>
+
       <style jsx>{`
+        @keyframes slideIn {
+          from {
+            transform: translateY(-20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.1);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        .alert-card {
+          animation: slideIn 0.5s ease-out;
+        }
+
+        .alert-icon {
+          animation: pulse 2s infinite;
+        }
+
+        .forecast-item {
+          animation: fadeIn 0.5s ease-out;
+          animation-fill-mode: both;
+        }
+
+        .forecast-item:nth-child(1) { animation-delay: 0.1s; }
+        .forecast-item:nth-child(2) { animation-delay: 0.2s; }
+        .forecast-item:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateX(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .forecast-item:hover {
+          transform: translateX(8px);
+          background: #f1f5f9;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-button:hover {
+          transform: translateY(-1px);
+          filter: brightness(1.05);
+        }
+
         .dashboard-card {
           transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .dashboard-card:hover {
           transform: translateY(-5px);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
+
         .dashboard-icon {
           transition: transform 0.3s ease;
         }
+
         .dashboard-card:hover .dashboard-icon {
-          transform: scale(1.1);
+          transform: scale(1.1) rotate(5deg);
         }
       `}</style>
     </div>
