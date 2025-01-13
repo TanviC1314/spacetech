@@ -63,7 +63,7 @@ function Events() {
                   <h2 className="event-title">{event.title}</h2>
                 </div>
                 <div className="download-section">
-                  <a href="/swpc.pdf" download className="download-button">
+                  <a href="src/assets/swap.pdf" download className="download-button">
                     <Download size={24} className="download-icon" />
                     Download Event PDF
                   </a>
@@ -188,7 +188,8 @@ function Events() {
         .download-section {
           display: flex;
           justify-content: center;
-          margin-bottom: 2rem;
+          margin-bottom: 5rem;
+          margin-top:-70px;
         }
         .download-button {
           display: flex;
