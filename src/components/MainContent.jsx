@@ -60,7 +60,7 @@ function MainContent({ sidebarOpen }) {
 
   const styles = {
     mainContent: {
-      marginLeft: '-20px',
+      marginLeft: '-25px',
       padding: '0',
       transition: 'padding-left 0.3s ease-in-out',
     },
@@ -163,7 +163,7 @@ function MainContent({ sidebarOpen }) {
               />
             </circle>
           ))}
-          {[...Array(1)].map((_, i) => ( // Reduced number of shooting stars
+          {[...Array(1)].map((_, i) => (
             <line
               key={`shooting-star-${i}`}
               x1={Math.random() * 1000}

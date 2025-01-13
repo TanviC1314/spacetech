@@ -42,7 +42,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2023 EcoExplorer. All rights reserved.</p>
+        <p>&copy; 2023 SWPC. All rights reserved.</p>
       </div>
       <style jsx>{`
         .footer {

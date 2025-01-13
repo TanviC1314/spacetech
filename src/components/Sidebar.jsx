@@ -76,7 +76,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
         }
 
         .sidebar.open .toggle-btn {
-          left: 250px;
+          left: 188px;
         }
 
         nav {

@@ -6,7 +6,7 @@ function Navbar({ sidebarOpen }) {
 
   return (
     <nav className={`navbar ${sidebarOpen ? 'sidebar-open' : ''}`}>
-      <div className="logo">EcoExplorer</div>
+      <div className="logo">SWPC</div>
       <ul className="nav-links">
         {['Home', 'News', 'Data', 'Research', 'About'].map((tab) => (
           <li key={tab} className={activeTab === tab ? 'active' : ''}>
@@ -29,6 +29,7 @@ function Navbar({ sidebarOpen }) {
           height: 60px;
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
           transition: padding-left 0.3s ease-in-out;
+          margin-top: -10px;
         }
         .navbar.sidebar-open {
           padding-left: 270px;
