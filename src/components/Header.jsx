@@ -1,17 +1,17 @@
 import React from 'react';
-import logoL from '../assets/logoL.png';
 import logoR from '../assets/logoL.png';
+import logoL from '../assets/logoR.jpeg';
 
 function Header({ className }) {
   return (
     <header className={`header ${className}`}>
-      <img src={logoL} width={50} height={50} alt="Left Logo" className="left-logo" />
+      <img src={logoL} width={70} height={70} alt="Left Logo" className="left-logo" />
       <div className="header-content">
-        <h1>Mahavir Education Trust's</h1>
-        <h2>SHAH & ANCHOR KUTCHHI ENGINEERING COLLEGE</h2>
-        <p>An Autonomous Institute Affiliated to University of Mumbai, Approved by D.T.E & A.I.C.T.E ISO 9001 CERTIFIED</p>
+        <p>India's First</p>
+        <h2>Space Weather Prediction Center</h2>
+        <p>Industry * Academia * National Labs</p>
       </div>
-      <img src={logoR} width={50} height={50} alt="Right Logo" className="right-logo" />
+      <img src={logoR} width={70} height={70} alt="Right Logo" className="right-logo" />
       <style jsx>{`
         .header {
           display: flex;
@@ -24,7 +24,7 @@ function Header({ className }) {
           text-align: center;
           margin-top: -12px;
           transition: margin-left 0.3s ease-in-out;
-          background: linear-gradient(to right, #003366, #004080);
+          background: linear-gradient(to right, rgb(0, 0, 66), rgb(0, 0, 66));
           color: white;
         }
         .header-content {
