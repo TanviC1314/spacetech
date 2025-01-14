@@ -62,12 +62,12 @@ function Events() {
                   </div>
                   <h2 className="event-title">{event.title}</h2>
                 </div>
-                <div className="download-section">
+                {/* <div className="download-section">
                   <a href="src/assets/swap.pdf" download className="download-button">
                     <Download size={24} className="download-icon" />
                     Download Event PDF
                   </a>
-                </div>
+                </div> */}
                 <div className="event-schedule">
                   <h3>Program Schedule</h3>
                   <div className="timeline">
@@ -229,7 +229,7 @@ function Events() {
         .event-schedule {
           background: #f0f8ff;
           padding: 1.5rem;
-          margin-top: -50px;
+          margin-top: -18px;
           border-radius: 10px;
         }
         .event-schedule h3 {
