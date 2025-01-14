@@ -85,28 +85,28 @@ function MainContent({ sidebarOpen }) {
       title: 'Weather Forecast', 
       description: 'Stay informed with our latest weather updates and predictions.', 
       icon: 'cloud',
-      image: 'src/assets/weather.png',
+      image: 'assets/weather.png',
       link: '#weather-forecast'
     },
     { 
       title: 'Ocean Research', 
       description: 'Explore groundbreaking discoveries in oceanography and marine science.', 
       icon: 'droplet',
-      image: 'src/assets/ocean.png',
+      image: 'assets/ocean.png',
       link: '#ocean-research'
     },
     { 
       title: 'Climate Change', 
       description: 'Analyze the impacts of climate change and our ongoing mitigation efforts.', 
       icon: 'thermometer',
-      image: 'src/assets/climate.png',
+      image: 'assets/climate.png',
       link: '#climate-change'
     },
     { 
       title: 'Marine Life', 
       description: 'Investigate diverse marine ecosystems and species in our oceans.', 
       icon: 'fish',
-      image: 'src/assets/marine.png',
+      image: 'assets/marine.png',
       link: '#marine-life'
     },
   ];

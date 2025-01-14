@@ -1,17 +1,15 @@
 import React from 'react';
-import logoR from '../assets/logoL.png';
-import logoL from '../assets/logoR.jpeg';
 
 function Header({ className }) {
   return (
     <header className={`header ${className}`}>
-      <img src={logoL} width={70} height={70} alt="Left Logo" className="left-logo" />
+      <img src="assets/logoR.png" width={70} height={70} alt="Left Logo" className="left-logo" />
       <div className="header-content">
         <p>India's First</p>
         <h2>Space Weather Prediction Center</h2>
         <p>Industry * Academia * National Labs</p>
       </div>
-      <img src={logoR} width={70} height={70} alt="Right Logo" className="right-logo" />
+      <img src="assets/logoL.png" width={70} height={70} alt="Right Logo" className="right-logo" />
       <style jsx>{`
         .header {
           display: flex;

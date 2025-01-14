@@ -63,7 +63,7 @@ function Events() {
                   <h2 className="event-title">{event.title}</h2>
                 </div>
                 {/* <div className="download-section">
-                  <a href="src/assets/swap.pdf" download className="download-button">
+                  <a href="assets/swap.pdf" download className="download-button">
                     <Download size={24} className="download-icon" />
                     Download Event PDF
                   </a>
