@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Cloud, Thermometer, Waves, Fish, Satellite, FlaskConical, Anchor, Map, Trees, GraduationCap, Newspaper, Wrench, Info, Menu, X } from 'lucide-react';
+import { Home, Cloud, Thermometer, Waves, Fish, Satellite, FlaskConical, Anchor, Map, Trees, GraduationCap, Newspaper, Wrench, Info, Menu, X } from '../../node_modules/lucide-react';
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const links = [
